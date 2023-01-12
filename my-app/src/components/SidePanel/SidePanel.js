@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-import './SidePanel.css'
-
+import './SidePanel.css';
 export default function SidePanel(props) {
 
   const showFile = async (event) => {
@@ -23,9 +22,12 @@ export default function SidePanel(props) {
   return (
       <div className="side-panel">
           <h1>
-            <font face="Impact" size="5">AWAP 2023 Viewer</font><br />
+            <font face="Impact" size="5">awawga 2023 Viewer</font><br />
           </h1>
           <input type="file" onChange={showFile} />
+          <h1>
+            
+          </h1>
       </div>
   )
 }
