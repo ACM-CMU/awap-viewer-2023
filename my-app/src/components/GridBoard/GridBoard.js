@@ -30,6 +30,8 @@ export default function GridBoard(props) {
     framePlaying,
     setIsFinished,
     speed,
+    setTiles,
+    tiles
   } = useContext(ViewerContext)
 
   const nrows = replay.metadata.map_row
@@ -43,6 +45,10 @@ export default function GridBoard(props) {
   const [index, setIndex] = useState(-1)
   const intervalID = useRef(null)
 
+  // const [xpos, setXpos] = useState(-1)
+  // const [ypos, setYpos] = useState(-1)
+  // const [position, setPosition] = useState([null, null])
+
   // States for displaying various elements
   const [grid, setGrid] = useState(null)
   const [robots, setRobots] = useState(null)
@@ -54,13 +60,16 @@ export default function GridBoard(props) {
   // eslint-disable-next-line
   const initialGrid = useMemo(() => {
     let tempArr = []
+    let tileInfo = []
     // Passable tiles
     for (let row = 0; row < nrows; row++) {
       tempArr.push([])
+      tileInfo.push([])
       for (let col = 0; col < ncols; col++) {
         tempArr[row].push(
           <GridSquare key={`${col}${row}`} color="0" useImg={null} />
         )
+        tileInfo[row].push([0, 0])
       }
     }
 
@@ -71,6 +80,12 @@ export default function GridBoard(props) {
         tempArr[r][c] = (
           <GridSquare key={`${c}${r}`} color={colorID} useImg={useImg} />
         )
+        if (colorID == 1) {
+          tileInfo[r][c][0] = 'I'
+        } else if (colorID == 2) {
+          tileInfo[r][c][0] = 'M'
+        }
+
       }
     }
 
@@ -87,9 +102,12 @@ export default function GridBoard(props) {
           useImg={null}
         />
       )
+      tileInfo[r][c][0] = terrNum
+      tileInfo[r][c][1] = terrNum > 0 ? 1 : 2
     }
 
     setGrid(tempArr)
+    setTiles(tileInfo)
     setIndex(-1)
     clearInterval(intervalID.current)
     intervalID.current = null
@@ -104,7 +122,7 @@ export default function GridBoard(props) {
       tempArr.push([])
       for (let col = 0; col < ncols; col++) {
         tempArr[row].push(
-          <RobotSquare key={`${col}${row}`} x={col} y={row} hasRobot={false} />
+          <RobotSquare key={`${col}${row}`} x={col} y={row} hasRobot={false} battery={0}/>
         )
       }
     }
@@ -190,10 +208,20 @@ export default function GridBoard(props) {
             nextVisP1[y][x] = (
               <div key={`${x}${y}`} className="grid-square"></div>
             )
+            if (tiles[y][x][1] == 1 || tiles[y][x][1] == 0) {
+              tiles[y][x][1] = 1
+            } else {
+              tiles[y][x][1] = 3
+            }
           } else {
             nextVisP2[y][x] = (
               <div key={`${x}${y}`} className="grid-square"></div>
             )
+            if (tiles[y][x][1] == 2 || tiles[y][x][1] == 0) {
+              tiles[y][x][1] = 2
+            } else {
+              tiles[y][x][1] = 3
+            }
           }
         }
 
@@ -212,6 +240,7 @@ export default function GridBoard(props) {
           nextGrid[y][x] = (
             <GridSquare key={`${x}${y}`} color={terrCol} useImg={null} />
           )
+          tiles[y][x][0] = terrNum
         }
 
         // Modify robots
@@ -227,6 +256,8 @@ export default function GridBoard(props) {
                 x={xPrev}
                 y={yPrev}
                 hasRobot={false}
+                robotType={null}
+                battery={0}
               />
             )
           }
@@ -235,6 +266,7 @@ export default function GridBoard(props) {
           let x = robotCh[1]
           let y = robotCh[2]
           let robotType = robotCh[3]
+          let battery = robotCh[4]
           let robotImg
           if (player === "RED") {
             if (robotType === "EXPLORER") robotImg = ExplorerImgBlue
@@ -253,6 +285,8 @@ export default function GridBoard(props) {
               x={x}
               y={y}
               hasRobot={true}
+              type={robotType}
+              battery={battery}
             />
           )
           // Store robot coordinates
@@ -325,5 +359,6 @@ export default function GridBoard(props) {
       <div className="board robot">{robots}</div>
       <div className="board grid">{grid}</div>
     </div>
+    
   )
 }

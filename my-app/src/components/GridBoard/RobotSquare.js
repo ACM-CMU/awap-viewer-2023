@@ -1,15 +1,21 @@
 import React, { useContext } from "react"
 import { ViewerContext } from "../../pages/Viewer"
 import "./Grid.css"
+import "./Tooltip.css"
 
 export default function RobotSquare(props) {
-  const { srcImg, x, y, hasRobot } = props
-  const { setXCoord, setYCoord } = useContext(ViewerContext)
+  const { srcImg, x, y, type, hasRobot, battery} = props
+  const { setCol, setRow, tiles} = useContext(ViewerContext)
 
-  const handleHover = (xVal, yVal) => {
-    setXCoord(xVal)
-    setYCoord(yVal)
+  const handleHover = (col, row) => {
+    setCol(col)
+    setRow(row)
+    console.log(col, row)
+    if (col != null && row != null) {
+      console.log(tiles[row][col], type, battery)
+    }
   }
+  
   return (
     <div className="tile-div">
       {hasRobot ? (
@@ -35,7 +41,7 @@ export default function RobotSquare(props) {
           onMouseOut={() => {
             handleHover(null, null)
           }}
-        ></div>
+        ><span className="tooltiptext">Tooltip text</span></div>
       )}
     </div>
   )
