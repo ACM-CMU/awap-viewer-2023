@@ -68,6 +68,7 @@ export default function GridBoard(props) {
         tileInfo[row].push([0, 0])
       }
     }
+    console.log(tileInfo[1][1])
 
     const populateTiles = (tileArr, colorID, useImg) => {
       for (let tile of tileArr) {
@@ -76,9 +77,9 @@ export default function GridBoard(props) {
         tempArr[r][c] = (
           <GridSquare key={`${c}${r}`} color={colorID} useImg={useImg} />
         )
-        if (colorID == 1) {
+        if (colorID === 1) {
           tileInfo[r][c][0] = 'I'
-        } else if (colorID == 2) {
+        } else if (colorID === 2) {
           tileInfo[r][c][0] = 'M'
         }
 
@@ -180,6 +181,17 @@ export default function GridBoard(props) {
     return arrCopy
   }
 
+  const makeDeepCopy3D = (arr) => {
+    const arrCopy = arr.map((row, i) => {
+      return row.map((elemArr, j) => {
+        return elemArr.map((elem, k) => {
+          return elem
+        })
+      })
+    })
+    return arrCopy
+  }
+
   // animates grid when index changes
   useEffect(() => {
     if (sliderValue >= gameTurns.length) {
@@ -204,7 +216,7 @@ export default function GridBoard(props) {
             nextVisP1[y][x] = (
               <div key={`${x}${y}`} className="grid-square"></div>
             )
-            if (nextTileInfo[y][x][1] == 1 || nextTileInfo[y][x][1] == 0) {
+            if (nextTileInfo[y][x][1] === 1 || nextTileInfo[y][x][1] === 0) {
               nextTileInfo[y][x][1] = 1
             } else {
               nextTileInfo[y][x][1] = 3
@@ -213,7 +225,7 @@ export default function GridBoard(props) {
             nextVisP2[y][x] = (
               <div key={`${x}${y}`} className="grid-square"></div>
             )
-            if (nextTileInfo[y][x][1] == 2 || nextTileInfo[y][x][1] == 0) {
+            if (nextTileInfo[y][x][1] === 2 || nextTileInfo[y][x][1] === 0) {
               nextTileInfo[y][x][1] = 2
             } else {
               nextTileInfo[y][x][1] = 3
@@ -237,8 +249,8 @@ export default function GridBoard(props) {
             <GridSquare key={`${x}${y}`} color={terrCol} useImg={null} />
           )
           nextTileInfo[y][x][0] = terrNum
-          if (y == 1 && x == 1) {
-            console.log(nextTileInfo[1][1][0])
+          if (y === 1 && x === 1) {
+            // console.log(nextTileInfo[1][1][0])
           }
         }
 
@@ -298,7 +310,7 @@ export default function GridBoard(props) {
         const newVisP1 = makeDeepCopy(visibilityP1)
         const newVisP2 = makeDeepCopy(visibilityP2)
         const newRobots = makeDeepCopy(robots)
-        const newTileInfo = makeDeepCopy(tiles)
+        const newTileInfo = makeDeepCopy3D(tiles)
         while (idx <= sliderValue) {
           updateFrame(idx, newGrid, newVisP1, newVisP2, newRobots, newTileInfo)
           idx += 1
@@ -314,7 +326,7 @@ export default function GridBoard(props) {
         const newVisP1 = makeDeepCopy(p1InitialVis)
         const newVisP2 = makeDeepCopy(p2InitialVis)
         const newRobots = makeDeepCopy(initialRobots)
-        const newTileInfo = makeDeepCopy(arr[1])
+        const newTileInfo = makeDeepCopy3D(arr[1])
         idx = 0
         while (idx <= sliderValue) {
           updateFrame(idx, newGrid, newVisP1, newVisP2, newRobots, newTileInfo)

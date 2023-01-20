@@ -21,7 +21,7 @@ export default function RobotSquare(props) {
           setTileType("Type: Metal")
           break;
         default:
-          setTileType("Terraform Level: " + tiles[row][col][0])
+          setTileType("Terr. No.: " + tiles[row][col][0])
       }
       switch(tiles[row][col][1]) {
         case 0:
