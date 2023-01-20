@@ -1,24 +1,48 @@
-import React, { useContext } from "react"
+import React, { useContext, useState} from "react"
 import { ViewerContext } from "../../pages/Viewer"
 import "./Grid.css"
-import "./Tooltip.css"
 
 export default function RobotSquare(props) {
   const { srcImg, x, y, type, hasRobot, battery} = props
   const { setCol, setRow, tiles} = useContext(ViewerContext)
 
+  const [tiletype, setTileType] = useState(null)
+  const [tilevisib, setTileVisib] = useState(null)
+
   const handleHover = (col, row) => {
     setCol(col)
     setRow(row)
-    console.log(col, row)
     if (col != null && row != null) {
-      console.log(tiles[row][col], type, battery)
+      switch(tiles[row][col][0]) {
+        case "I":
+          setTileType("Type: Impassable")
+          break;
+        case "M":
+          setTileType("Type: Metal")
+          break;
+        default:
+          setTileType("Terraform Level: " + tiles[row][col][0])
+      }
+      switch(tiles[row][col][1]) {
+        case 0:
+          setTileVisib("None")
+          break;
+        case 1:
+          setTileVisib("Red")
+          break;
+        case 2:
+          setTileVisib("Blue")
+          break;
+        default:
+          setTileVisib("Both")
+      }
     }
   }
-  
+
   return (
     <div className="tile-div">
       {hasRobot ? (
+        <div className="grid-square">
         <img
           id={`robot${x}${y}`}
           src={srcImg}
@@ -31,6 +55,13 @@ export default function RobotSquare(props) {
             handleHover(null, null)
           }}
         />
+        <p className="tooltiptext"> 
+        Position: {x}, {y} <br></br>
+        {tiletype} <br></br>
+        Visibility: {tilevisib} <br></br>
+        Robot: {type}, {battery} <br></br>
+        </p>
+        </div>
       ) : (
         <div
           id={`robot${x}${y}`}
@@ -41,7 +72,12 @@ export default function RobotSquare(props) {
           onMouseOut={() => {
             handleHover(null, null)
           }}
-        ><span className="tooltiptext">Tooltip text</span></div>
+        >
+        <p className="tooltiptext"> 
+        Position: ({x}, {y}) <br></br>
+        {tiletype} <br></br>
+        Visibility: {tilevisib} <br></br>
+        </p></div>
       )}
     </div>
   )

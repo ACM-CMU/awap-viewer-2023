@@ -45,10 +45,6 @@ export default function GridBoard(props) {
   const [index, setIndex] = useState(-1)
   const intervalID = useRef(null)
 
-  // const [xpos, setXpos] = useState(-1)
-  // const [ypos, setYpos] = useState(-1)
-  // const [position, setPosition] = useState([null, null])
-
   // States for displaying various elements
   const [grid, setGrid] = useState(null)
   const [robots, setRobots] = useState(null)
@@ -111,8 +107,8 @@ export default function GridBoard(props) {
     setIndex(-1)
     clearInterval(intervalID.current)
     intervalID.current = null
-    return tempArr
-  }, [nrows, ncols, initImpass, initMetal, initTerr])
+    return [tempArr, tileInfo]
+  }, [nrows, ncols, initImpass, initMetal, initTerr, setTiles])
 
   // Initializes robot grid
   // eslint-disable-next-line
@@ -194,7 +190,7 @@ export default function GridBoard(props) {
     } else if (sliderValue <= -1) {
     } else {
       // Updates input arrays in place
-      const updateFrame = (i, nextGrid, nextVisP1, nextVisP2, nextRobots) => {
+      const updateFrame = (i, nextGrid, nextVisP1, nextVisP2, nextRobots, nextTileInfo) => {
         if (i < 0) return
         let turn = gameTurns[i]
         let player = turn.metadata.turn
@@ -208,19 +204,19 @@ export default function GridBoard(props) {
             nextVisP1[y][x] = (
               <div key={`${x}${y}`} className="grid-square"></div>
             )
-            if (tiles[y][x][1] == 1 || tiles[y][x][1] == 0) {
-              tiles[y][x][1] = 1
+            if (nextTileInfo[y][x][1] == 1 || nextTileInfo[y][x][1] == 0) {
+              nextTileInfo[y][x][1] = 1
             } else {
-              tiles[y][x][1] = 3
+              nextTileInfo[y][x][1] = 3
             }
           } else {
             nextVisP2[y][x] = (
               <div key={`${x}${y}`} className="grid-square"></div>
             )
-            if (tiles[y][x][1] == 2 || tiles[y][x][1] == 0) {
-              tiles[y][x][1] = 2
+            if (nextTileInfo[y][x][1] == 2 || nextTileInfo[y][x][1] == 0) {
+              nextTileInfo[y][x][1] = 2
             } else {
-              tiles[y][x][1] = 3
+              nextTileInfo[y][x][1] = 3
             }
           }
         }
@@ -240,7 +236,10 @@ export default function GridBoard(props) {
           nextGrid[y][x] = (
             <GridSquare key={`${x}${y}`} color={terrCol} useImg={null} />
           )
-          tiles[y][x][0] = terrNum
+          nextTileInfo[y][x][0] = terrNum
+          if (y == 1 && x == 1) {
+            console.log(nextTileInfo[1][1][0])
+          }
         }
 
         // Modify robots
@@ -256,8 +255,6 @@ export default function GridBoard(props) {
                 x={xPrev}
                 y={yPrev}
                 hasRobot={false}
-                robotType={null}
-                battery={0}
               />
             )
           }
@@ -301,28 +298,33 @@ export default function GridBoard(props) {
         const newVisP1 = makeDeepCopy(visibilityP1)
         const newVisP2 = makeDeepCopy(visibilityP2)
         const newRobots = makeDeepCopy(robots)
+        const newTileInfo = makeDeepCopy(tiles)
         while (idx <= sliderValue) {
-          updateFrame(idx, newGrid, newVisP1, newVisP2, newRobots)
+          updateFrame(idx, newGrid, newVisP1, newVisP2, newRobots, newTileInfo)
           idx += 1
         }
         setGrid(newGrid)
         setVisibilityP1(newVisP1)
         setVisibilityP2(newVisP2)
         setRobots(newRobots)
+        setTiles(newTileInfo)
       } else {
-        const newGrid = makeDeepCopy(initialGrid)
+        const arr = initialGrid
+        const newGrid = makeDeepCopy(arr[0])
         const newVisP1 = makeDeepCopy(p1InitialVis)
         const newVisP2 = makeDeepCopy(p2InitialVis)
         const newRobots = makeDeepCopy(initialRobots)
+        const newTileInfo = makeDeepCopy(arr[1])
         idx = 0
         while (idx <= sliderValue) {
-          updateFrame(idx, newGrid, newVisP1, newVisP2, newRobots)
+          updateFrame(idx, newGrid, newVisP1, newVisP2, newRobots, newTileInfo)
           idx += 1
         }
         setGrid(newGrid)
         setVisibilityP1(newVisP1)
         setVisibilityP2(newVisP2)
         setRobots(newRobots)
+        setTiles(newTileInfo)
       }
       setIndex(idx - 1)
       if (!framePlaying) {
