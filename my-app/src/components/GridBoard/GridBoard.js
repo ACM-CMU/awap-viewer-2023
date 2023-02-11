@@ -39,8 +39,8 @@ export default function GridBoard(props) {
     setBlueMetal
   } = useContext(ViewerContext)
 
-  const nrows = replay.metadata.map_row
-  const ncols = replay.metadata.map_col
+  const nrows = replay.map_height
+  const ncols = replay.map_width
   const initImpass = replay.initial_map_passability
   const initMetal = replay.initial_map_metal
   const initTerr = replay.initial_map_terraformed
