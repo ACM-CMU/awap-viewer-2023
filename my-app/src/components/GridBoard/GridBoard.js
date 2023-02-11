@@ -230,7 +230,7 @@ export default function GridBoard(props) {
           let x = visCh[0]
           let y = visCh[1]
 
-          if (player === "RED") {
+          if (player === "red") {
             nextVisP1[y][x] = (
               <div key={`${x}${y}`} className="grid-square"></div>
             )
@@ -256,13 +256,19 @@ export default function GridBoard(props) {
           let x = terrCh[0]
           let y = terrCh[1]
 
-          let terrNum = terrCh[2]
+          let terrNum = -1
+          if (player === "red") {
+            terrNum = 1
+          }
+          terrNum = terrNum + nextTileInfo[y][x][0]
+
           let terrCol = 0
           if (terrNum > 0) {
             terrCol = 3
           } else if (terrNum < 0) {
             terrCol = 4
           }
+
           nextGrid[y][x] = (
             <GridSquare key={`${x}${y}`} color={terrCol} useImg={null} />
           )
@@ -291,32 +297,34 @@ export default function GridBoard(props) {
           // Add robot at new position
           let x = robotCh[1]
           let y = robotCh[2]
-          let robotType = robotCh[3]
-          let battery = robotCh[4]
-          let robotImg
-          if (player === "RED") {
-            if (robotType === "EXPLORER") robotImg = ExplorerImgRed
-            else if (robotType === "TERRAFORMER") robotImg = TerraformerImgRed
-            else robotImg = MinerImgRed
-          } else {
-            if (robotType === "EXPLORER") robotImg = ExplorerImgBlue
-            else if (robotType === "TERRAFORMER") robotImg = TerraformerImgBlue
-            else robotImg = MinerImgBlue
-          }
+          if (x !== -1 && y !== -1) {
+            let robotType = robotCh[3]
+            let battery = robotCh[4]
+            let robotImg
+            if (player === "red") {
+              if (robotType === "e") robotImg = ExplorerImgRed
+              else if (robotType === "t") robotImg = TerraformerImgRed
+              else robotImg = MinerImgRed
+            } else {
+              if (robotType === "e") robotImg = ExplorerImgBlue
+              else if (robotType === "t") robotImg = TerraformerImgBlue
+              else robotImg = MinerImgBlue
+            }
 
-          nextRobots[y][x] = (
-            <RobotSquare
-              key={`${x}${y}`}
-              srcImg={robotImg}
-              x={x}
-              y={y}
-              hasRobot={true}
-              type={robotType}
-              battery={battery}
-            />
-          )
-          // Store robot coordinates
-          prevRobots.current[robotID] = [x, y]
+            nextRobots[y][x] = (
+              <RobotSquare
+                key={`${x}${y}`}
+                srcImg={robotImg}
+                x={x}
+                y={y}
+                hasRobot={true}
+                type={robotType}
+                battery={battery}
+              />
+            )
+            // Store robot coordinates
+            prevRobots.current[robotID] = [x, y]
+          }
         }
       }
 

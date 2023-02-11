@@ -8,6 +8,7 @@ export default function RobotSquare(props) {
 
   const [tiletype, setTileType] = useState(null)
   const [tilevisib, setTileVisib] = useState(null)
+  const [robottype, setRobotType] = useState(null)
 
   const handleHover = (col, row) => {
     setCol(col)
@@ -37,6 +38,17 @@ export default function RobotSquare(props) {
           setTileVisib("Both")
       }
     }
+    switch(type) {
+      case "e":
+        setRobotType("Explorer")
+        break;
+      case "m":
+        setRobotType("Miner")
+        break;
+      default:
+        setRobotType("Terraformer")
+        break;
+    }
   }
 
   return (
@@ -59,7 +71,8 @@ export default function RobotSquare(props) {
         Position: {x}, {y} <br></br>
         {tiletype} <br></br>
         Visibility: {tilevisib} <br></br>
-        Robot: {type}, {battery} <br></br>
+        Robot: {robottype} <br></br>
+        Energy Level: {battery} <br></br>
         </p>
         </div>
       ) : (
