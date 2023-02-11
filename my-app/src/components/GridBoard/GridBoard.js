@@ -209,24 +209,24 @@ export default function GridBoard(props) {
       const updateFrame = (i, nextGrid, nextVisP1, nextVisP2, nextRobots, nextTileInfo) => {
         if (i < 0) return
         let turn = gameTurns[i]
-        let player = turn.metadata.turn
+        let player = turn.team
 
-        if(player === "RED"){
+        if(player === "red"){
           //Setting Red Metal Array
           const temp = redMetal
-          temp.push(turn.metadata.metal)
+          temp.push(turn.metal)
           setRedMetal(temp)
           setFrame(sliderValue/2)
         } else {
-            //Setting Blue Metal Array
-            const temp = blueMetal
-            temp.push(turn.metadata.metal)
-            setBlueMetal(temp)
-            setFrame((sliderValue-1)/2)
+          //Setting Blue Metal Array
+          const temp = blueMetal
+          temp.push(turn.metal)
+          setBlueMetal(temp)
+          setFrame((sliderValue-1)/2)
         }
 
         // Update visibility
-        for (let visCh of turn.tiles_made_visible) {
+        for (let visCh of turn.tiles_explored) {
           let x = visCh[0]
           let y = visCh[1]
 
