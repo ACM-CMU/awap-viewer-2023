@@ -15,7 +15,7 @@ import TerraformerImgRed from "../../new-img/shovel-outline-red.PNG"
 import MinerImgRed from "../../new-img/pick-outline-red.PNG"
 import ExplorerImgBlue from "../../new-img/light-outline-blue.PNG"
 import TerraformerImgBlue from "../../new-img/shovel-outline-blue.PNG"
-import MinerImgBlue from "../../new-img/pick-outline-red.PNG"
+import MinerImgBlue from "../../new-img/pick-outline-blue.PNG"
 import MetalImg from "../../img/metal_outline.png"
 
 export default function GridBoard(props) {
@@ -320,6 +320,7 @@ export default function GridBoard(props) {
                 hasRobot={true}
                 type={robotType}
                 battery={battery}
+                id={robotID}
               />
             )
             // Store robot coordinates

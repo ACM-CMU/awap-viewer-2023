@@ -3,7 +3,7 @@ import { ViewerContext } from "../../pages/Viewer"
 import "./Grid.css"
 
 export default function RobotSquare(props) {
-  const { srcImg, x, y, type, hasRobot, battery} = props
+  const { srcImg, x, y, type, hasRobot, battery, id} = props
   const { setCol, setRow, tiles} = useContext(ViewerContext)
 
   const [tiletype, setTileType] = useState(null)
@@ -71,7 +71,7 @@ export default function RobotSquare(props) {
         Position: {x}, {y} <br></br>
         {tiletype} <br></br>
         Visibility: {tilevisib} <br></br>
-        Robot: {robottype} <br></br>
+        Robot: {id}, {robottype} <br></br>
         Energy Level: {battery} <br></br>
         </p>
         </div>
