@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.bc957bcb.css",
+    "main.js": "/static/js/main.e8b1b942.js",
+    "static/js/787.3d6840c9.chunk.js": "/static/js/787.3d6840c9.chunk.js",
+    "static/media/metal_outline.png": "/static/media/metal_outline.40e405fdbbc08654c750.png",
+    "static/media/pick-outline-blue.PNG": "/static/media/pick-outline-blue.12e9f4216a46cb7446a0.PNG",
+    "static/media/pick-outline-red.PNG": "/static/media/pick-outline-red.955f45283d06915a0d00.PNG",
+    "static/media/shovel-outline-blue.PNG": "/static/media/shovel-outline-blue.4dfb9141a7156a350d34.PNG",
+    "static/media/shovel-outline-red.PNG": "/static/media/shovel-outline-red.c0b7974e98630d5e934a.PNG",
+    "static/media/light-outline-blue.PNG": "/static/media/light-outline-blue.0aa4e152b683f3d3acc3.PNG",
+    "static/media/light-outline-red.PNG": "/static/media/light-outline-red.eff1eb0e9e84468f3769.PNG",
+    "index.html": "/index.html",
+    "main.bc957bcb.css.map": "/static/css/main.bc957bcb.css.map",
+    "main.e8b1b942.js.map": "/static/js/main.e8b1b942.js.map",
+    "787.3d6840c9.chunk.js.map": "/static/js/787.3d6840c9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bc957bcb.css",
+    "static/js/main.e8b1b942.js"
+  ]
+}
