@@ -11,8 +11,7 @@ import FormControl from "@mui/material/FormControl"
 import Select from "@mui/material/Select"
 import MenuItem from "@mui/material/MenuItem"
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch"
-import LineChart from './LineChart.js';
-import TerraformChart from './TerraformChart.js';
+import LineChart from "./LineChart.js"
 
 export default function SidePanel(props) {
   const {
@@ -28,9 +27,8 @@ export default function SidePanel(props) {
     speed,
     setRedMetal,
     setBlueMetal,
-    setRedTerraform,
-    setBlueTerraform,
     setSpeed,
+    setIsTrailToggled,
   } = useContext(ViewerContext)
 
   const showFile = async (event) => {
@@ -77,8 +75,7 @@ export default function SidePanel(props) {
   const resetPlaybutton = useCallback(() => {
     setRedMetal([])
     setBlueMetal([])
-    setRedTerraform([])
-    setBlueTerraform([])
+
     setFramePlaying(false)
     setIsPlay(false)
   }, [setFramePlaying, setIsPlay])
@@ -189,47 +186,45 @@ export default function SidePanel(props) {
                 onChange={handleSpeedChange}
                 className="speed-select"
               >
-                <MenuItem value={0.25}>0.25x</MenuItem>
                 <MenuItem value={0.5}>0.5</MenuItem>
                 <MenuItem value={1}>1.0</MenuItem>
                 <MenuItem value={2.0}>2.0</MenuItem>
-                <MenuItem value={4.0}>4x</MenuItem>
-                <MenuItem value={8.0}>8x</MenuItem>
               </Select>
             </FormControl>
           </StyledEngineProvider>
         </Grid>
       </Grid>
-
-      <ToggleSwitch
-        onToggle={handleToggleP1Vis}
-        useID="p1vis"
-        disabled={isDisabled}
-      >
-        <p>Player 1 Visibility</p>
-      </ToggleSwitch>
-      <ToggleSwitch
-        onToggle={handleToggleP2Vis}
-        useID="p2vis"
-        disabled={isDisabled}
-      >
-        <p>Player 2 Visibility</p>
-      </ToggleSwitch>
+      <div class="toggle-layout">
+        <ToggleSwitch
+          onToggle={handleToggleP1Vis}
+          useID="p1vis"
+          disabled={isDisabled}
+        >
+          <p>Player 1 Visibility</p>
+        </ToggleSwitch>
+        <ToggleSwitch
+          onToggle={handleToggleP2Vis}
+          useID="p2vis"
+          disabled={isDisabled}
+        >
+          <p>Player 2 Visibility</p>
+        </ToggleSwitch>
+        <ToggleSwitch
+          onToggle={() => setIsTrailToggled((value) => !value)}
+          useID="trailtoggle"
+          disabled={isDisabled}
+        >
+          <p>Show Robot Move Trail</p>
+        </ToggleSwitch>
+      </div>
       <div className="container">
         <div className="row">
-        <TerraformChart />
-        <LineChart />
+          <LineChart />
           <div className="col-lg-6 graph">
-            <p>
-            <h1>
-          </h1>
-              
-            </p>
+            <p></p>
           </div>
           <div className="col-lg-6 graph">
-            <p>
-
-            </p>
+            <p></p>
           </div>
         </div>
       </div>
