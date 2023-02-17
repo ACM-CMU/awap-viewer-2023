@@ -1,9 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.820a8cb2.css",
-    "main.js": "/static/js/main.44d5ab54.js",
+    "main.css": "/static/css/main.45a8a3fd.css",
+    "main.js": "/static/js/main.64808391.js",
     "static/js/787.3d6840c9.chunk.js": "/static/js/787.3d6840c9.chunk.js",
-    "static/media/metal_outline.png": "/static/media/metal_outline.40e405fdbbc08654c750.png",
     "static/media/metal.png": "/static/media/metal.3f3eae9e8315fcb39924.png",
     "static/media/pick-outline-blue.PNG": "/static/media/pick-outline-blue.5e667075dc96dff511db.PNG",
     "static/media/pick-outline-red.PNG": "/static/media/pick-outline-red.60a6d25c007d7ac6301f.PNG",
@@ -12,12 +11,12 @@
     "static/media/light-outline-blue.PNG": "/static/media/light-outline-blue.54469c4af5bdaf3cb0f8.PNG",
     "static/media/light-outline-red.PNG": "/static/media/light-outline-red.f9dd44b9f927ee4677bf.PNG",
     "index.html": "/index.html",
-    "main.820a8cb2.css.map": "/static/css/main.820a8cb2.css.map",
-    "main.44d5ab54.js.map": "/static/js/main.44d5ab54.js.map",
+    "main.45a8a3fd.css.map": "/static/css/main.45a8a3fd.css.map",
+    "main.64808391.js.map": "/static/js/main.64808391.js.map",
     "787.3d6840c9.chunk.js.map": "/static/js/787.3d6840c9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.820a8cb2.css",
-    "static/js/main.44d5ab54.js"
+    "static/css/main.45a8a3fd.css",
+    "static/js/main.64808391.js"
   ]
 }
