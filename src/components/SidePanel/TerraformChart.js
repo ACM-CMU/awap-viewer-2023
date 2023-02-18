@@ -1,3 +1,4 @@
+import { Stack } from "@mui/system"
 import React, { useContext } from "react"
 
 import Chart from "react-google-charts"
@@ -20,10 +21,11 @@ const LineChartOptions = {
   //backgroundColor: '#F9B697',
   //title: 'Company Performance',
   //subtitle: 'Sales, Expenses, and Profit: 2014-2017',
-
+  backgroundColor: "#E27B58",
   chartArea: {
     backgroundColor: {
-      fill: "#F4F4F4",
+      // fill: "#F4F4F4",
+      fill: "#E27B58",
       opacity: 100,
     },
   },
@@ -32,14 +34,15 @@ const LineChartOptions = {
     fontName: "Impact",
     fontSize: 20,
   },
+
   hAxis: {
     title: "Frame",
     titleTextStyle: {
       fontName: "Roboto",
-      fontStyle: "bold", //or bold, italic, etc.
+      fontStyle: "bold",
       italic: false,
-      fontSize: 12,
-      //color: '#ff0000'
+      fontSize: 16,
+      color: "#663926"
     },
   },
   vAxis: {
@@ -48,8 +51,8 @@ const LineChartOptions = {
       fontName: "Roboto",
       fontStyle: "bold",
       italic: false,
-      fontSize: 12,
-      //color: '#ff0000'
+      fontSize: 16,
+      color: "#663926"
     },
     viewWindow: {
       min: 0,
@@ -87,17 +90,19 @@ function TerraformChart() {
   }
 
   return (
-    <div className="container mt-5">
-      <h1>Terraform Graph</h1>
-      <Chart
-        width={"350px"}
-        height={"250px"}
-        chartType="LineChart"
-        loader={<div>Loading Chart</div>}
-        data={LineData}
-        options={LineChartOptions}
-        rootProps={{ "data-testid": "3" }}
-      />
+    <div className="container mt-3">
+      <h2 style={{ fontSize: "3.5vmin", marginBottom: 0 }}>Terraform Graph</h2>
+      <Stack alignItems="center" justifyContent="center">
+        <Chart
+          width={"380px"}
+          height={"280px"}
+          chartType="LineChart"
+          loader={<div>Loading Chart</div>}
+          data={LineData}
+          options={LineChartOptions}
+          rootProps={{ "data-testid": "3" }}
+        />
+      </Stack>
     </div>
   )
 }
