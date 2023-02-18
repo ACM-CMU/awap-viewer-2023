@@ -176,8 +176,8 @@ export default function GridBoard(props) {
         tempArr[row].push(
           <RobotSquare
             key={`${row}${col}`}
-            x={col}
-            y={row}
+            x={row}
+            y={col}
             hasRobot={false}
             battery={0}
           />
