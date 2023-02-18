@@ -149,3 +149,8 @@ button {
   background-color: var(--dark-color);
   color: white;
 }
+
+input[type="submit"]:hover,
+button:hover {
+  background-color: var(--dark-accent-color);
+}

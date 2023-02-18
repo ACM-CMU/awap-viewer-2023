@@ -6,7 +6,8 @@ import { StyledEngineProvider } from "@mui/material/styles"
 import { IconButton } from "@mui/material"
 import PlayArrowIcon from "@mui/icons-material/PlayArrow"
 import PauseIcon from "@mui/icons-material/Pause"
-import SettingsIcon from '@mui/icons-material/Settings';
+import SettingsIcon from '@mui/icons-material/Settings'
+import SwapHorizIcon from '@mui/icons-material/SwapHoriz'
 import Collapse from "@mui/material/Collapse"
 import FormControl from "@mui/material/FormControl"
 import Select from "@mui/material/Select"
@@ -137,8 +138,13 @@ export default function SidePanel(props) {
 
   return (
     <div className="side-panel">
-      <button style={{ marginBottom: 18 }} onClick={props.togglePage}> Switch To Map Maker </button>
-      <h1 style={{ marginTop: 0, marginBottom: 0 }}>AWAP 2023</h1>
+      <button
+        style={{ position: "absolute", top: 0, right: 10, zIndex: 10 }} 
+        onClick={props.togglePage}
+      > 
+        <SwapHorizIcon/>
+      </button>
+      <h1 style={{ marginTop: 18, marginBottom: 0 }}>AWAP 2023</h1>
       <h2 style={{ marginTop: 0, marginBottom: 18 }}>Game Viewer</h2>
       <input
         id="fileobj"
