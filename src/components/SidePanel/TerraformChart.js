@@ -31,18 +31,18 @@ const LineChartOptions = {
       fontStyle: "bold",
       italic: false,
       fontSize: 15,
-      color: "#663926"
+      color: "#663926",
     },
     baselineColor: "#421f0f",
     gridlines: {
-      color: "#663926"
+      color: "#663926",
     },
     minorGridlines: {
-      color: "#92624e"
+      color: "#92624e",
     },
     textStyle: {
-      color: "#663926"
-    }
+      color: "#663926",
+    },
   },
   vAxis: {
     title: "Terraformed Tiles",
@@ -51,29 +51,29 @@ const LineChartOptions = {
       fontStyle: "bold",
       italic: false,
       fontSize: 15,
-      color: "#663926"
+      color: "#663926",
     },
     viewWindow: {
       min: 0,
     },
     baselineColor: "#421f0f",
     gridlines: {
-      color: "#663926"
+      color: "#663926",
     },
     minorGridlines: {
-      color: "#92624e"
+      color: "#92624e",
     },
     textStyle: {
-      color: "#663926"
-    }
+      color: "#663926",
+    },
   },
   legend: {
     textStyle: {
       fontName: "Roboto",
       fontStyle: "bold",
       fontSize: 12,
-      color: "#663926"
-    }
+      color: "#663926",
+    },
   },
   series: {},
 }
@@ -95,19 +95,21 @@ function TerraformChart() {
   }
 
   return (
-    <div className="container mt-3">
-      <h2 style={{ fontSize: "3.5vmin", marginBottom: 18 }}>Terraform Graph</h2>
-      <Stack alignItems="center" justifyContent="center">
+    <div>
+      <div className="vert-container graph">
+        <h2 style={{ fontSize: "3vmin", margin: "0 1 18 1" }}>
+          Terraform Graph
+        </h2>
         <Chart
-          width={"380px"}
-          height={"280px"}
+          width={"100%"}
+          height={"100%"}
           chartType="LineChart"
           loader={<div>Loading Chart</div>}
           data={LineData}
           options={LineChartOptions}
           rootProps={{ "data-testid": "3" }}
         />
-      </Stack>
+      </div>
     </div>
   )
 }

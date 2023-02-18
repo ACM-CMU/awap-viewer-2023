@@ -79,6 +79,12 @@ p {
 .hori-container.graph {
   margin-top: 2vmin;
   margin-bottom: 2vmin;
+  justify-content: center;
+}
+
+.vert-container.graph {
+  margin-left: 1vw;
+  margin-right: 1vw;
 }
 
 /* File upload button */

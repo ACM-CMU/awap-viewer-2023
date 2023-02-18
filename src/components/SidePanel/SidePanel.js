@@ -314,8 +314,10 @@ export default function SidePanel(props) {
           BLUE ROBOTS: {replay == null ? 0 : blueRobots}{" "}
         </h2>
       </Stack>
-      <TerraformChart />
-      <LineChart />
+      <div className="hori-container graph">
+        <TerraformChart />
+        <LineChart />
+      </div>
     </div>
   )
 }
