@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.a5d99dd8.css",
-    "main.js": "/static/js/main.a57f61d8.js",
+    "main.js": "/static/js/main.fff1f0b4.js",
     "static/js/787.3d6840c9.chunk.js": "/static/js/787.3d6840c9.chunk.js",
     "static/media/metal.png": "/static/media/metal.3f3eae9e8315fcb39924.png",
     "static/media/pick-outline-blue.PNG": "/static/media/pick-outline-blue.5e667075dc96dff511db.PNG",
@@ -9,14 +9,15 @@
     "static/media/shovel-outline-blue.PNG": "/static/media/shovel-outline-blue.0a13f32686a0165a9171.PNG",
     "static/media/shovel-outline-red.PNG": "/static/media/shovel-outline-red.6db51ffaba09ea958718.PNG",
     "static/media/light-outline-blue.PNG": "/static/media/light-outline-blue.54469c4af5bdaf3cb0f8.PNG",
+    "static/media/explosion.png": "/static/media/explosion.0ef6b79ecab233617c53.png",
     "static/media/light-outline-red.PNG": "/static/media/light-outline-red.f9dd44b9f927ee4677bf.PNG",
     "index.html": "/index.html",
     "main.a5d99dd8.css.map": "/static/css/main.a5d99dd8.css.map",
-    "main.a57f61d8.js.map": "/static/js/main.a57f61d8.js.map",
+    "main.fff1f0b4.js.map": "/static/js/main.fff1f0b4.js.map",
     "787.3d6840c9.chunk.js.map": "/static/js/787.3d6840c9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a5d99dd8.css",
-    "static/js/main.a57f61d8.js"
+    "static/js/main.fff1f0b4.js"
   ]
 }
