@@ -322,7 +322,8 @@ export default function GridBoard(props) {
             }
           }
         }
-
+        console.log(i + player)
+        console.log(turn.tiles_terraformed)
         // Update terrformedness
         for (let terrCh of turn.tiles_terraformed) {
           let x = terrCh[0]
@@ -333,6 +334,7 @@ export default function GridBoard(props) {
             terrNum = 1
           }
           terrNum = terrNum + nextTileInfo[y][x][0]
+          // console.log(player + " " + i + " " + terrNum)
 
           // let terrCol = 0
           // if (terrNum > 0) {
@@ -418,7 +420,7 @@ export default function GridBoard(props) {
 
       var idx
       if (sliderValue >= index) {
-        idx = index
+        idx = index + 1
         let newTrails
         const newGrid = makeDeepCopy(grid)
         const newVisP1 = makeDeepCopy(visibilityP1)
