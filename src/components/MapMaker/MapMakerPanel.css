@@ -25,12 +25,6 @@ p {
   font-size: 2.3vmin;
 }
 
-.graph {
-  margin-top: 5vmin;
-  margin-bottom: 5vmin;
-  overflow-wrap: break-word;
-}
-
 /* Next and Previous Buttons */
 .arrow {
   width: 4vmin;
