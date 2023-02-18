@@ -72,18 +72,27 @@ function LineChart() {
   // console.log("redMetal: " + redMetal)
 
   const LineData = [
-    ["Frame", "B", "R"],
-    [0, 0, 0],
+    ["Frame", "B", "R"]
   ]
 
   for (let i = 0; i < frame; i++) {
-    const temp = []
-    temp.push(i)
-    temp.push(blueMetal[i])
-    temp.push(redMetal[i])
-    LineData.push(temp)
+    // console.log("Index: " + i)
+    if((frame - i) <= 20){
+      const temp = []
+      temp.push(i)
+      temp.push(blueMetal[i])
+      temp.push(redMetal[i])
+      LineData.push(temp)
+    }
   }
 
+  // console.log("UNSPLIT: " + LineData)
+
+  // if(LineData.length > 22){
+  //   console.log("SPLIT : " + LineData.splice(LineData.length - 20, 20))
+  //   LineData = LineData.splice(LineData.length - 20, 20)
+  //   // LineData = LineData.splice(LineData.length - 21, 20)
+  // }
   // console.log("LineChart: " + LineData)
 
   return (
