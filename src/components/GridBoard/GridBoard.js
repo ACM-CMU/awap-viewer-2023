@@ -127,6 +127,14 @@ export default function GridBoard(props) {
       let c = terr_tile[0]
       let r = terr_tile[1]
       let terrNum = terr_tile[2]
+      if (terrNum > 10) {
+        terrNum = 10 
+        console.log("Terraform value greater than 10")
+      } 
+      if (terrNum < ~10) {
+        terrNum = ~10 
+        console.log("Terraform value greater than 10")
+      }
       tempArr[r][c] = (
         <GridSquare
           key={`${c}${r}`}
@@ -342,6 +350,14 @@ export default function GridBoard(props) {
           // } else if (terrNum < 0) {
           //   terrCol = 4
           // }
+          if (terrNum > 10) {
+            terrNum = 10 
+            console.log("Terraform value greater than 10")
+          } 
+          if (terrNum < ~10) {
+            terrNum = ~10 
+            console.log("Terraform value greater than 10")
+          }
 
           nextGrid[y][x] = (
             <GridSquare key={`${x}${y}`} color={terrNum*10} useImg={null} />
