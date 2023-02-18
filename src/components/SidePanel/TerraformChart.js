@@ -1,31 +1,20 @@
-import { Stack } from "@mui/system"
 import React, { useContext } from "react"
 
+import Stack from "@mui/material/Stack"
 import Chart from "react-google-charts"
 import { ViewerContext } from "../../pages/Viewer"
 
-/*
-    [0, 0, 0],
-    [1, 10, 5],
-    [2, 23, 15],
-    [3, 17, 9],
-    [4, 18, 10],
-    [5, 9, 5],
-    [6, 11, 3],
-    [7, 27, 19],
-    [8, 27, 200],
-  */
-
 const LineChartOptions = {
-  //title: "Metal Reserves",
-  //backgroundColor: '#F9B697',
-  //title: 'Company Performance',
-  //subtitle: 'Sales, Expenses, and Profit: 2014-2017',
-  backgroundColor: "#E27B58",
+  backgroundColor: {
+    fill: "#F9B697",
+    stroke: "#663926",
+    strokeWidth: 2,
+  },
   chartArea: {
+    top: 40,
+    left: 80,
     backgroundColor: {
-      // fill: "#F4F4F4",
-      fill: "#E27B58",
+      fill: "#F9B697",
       opacity: 100,
     },
   },
@@ -41,9 +30,19 @@ const LineChartOptions = {
       fontName: "Roboto",
       fontStyle: "bold",
       italic: false,
-      fontSize: 16,
+      fontSize: 15,
       color: "#663926"
     },
+    baselineColor: "#421f0f",
+    gridlines: {
+      color: "#663926"
+    },
+    minorGridlines: {
+      color: "#92624e"
+    },
+    textStyle: {
+      color: "#663926"
+    }
   },
   vAxis: {
     title: "Terraformed Tiles",
@@ -51,12 +50,30 @@ const LineChartOptions = {
       fontName: "Roboto",
       fontStyle: "bold",
       italic: false,
-      fontSize: 16,
+      fontSize: 15,
       color: "#663926"
     },
     viewWindow: {
       min: 0,
     },
+    baselineColor: "#421f0f",
+    gridlines: {
+      color: "#663926"
+    },
+    minorGridlines: {
+      color: "#92624e"
+    },
+    textStyle: {
+      color: "#663926"
+    }
+  },
+  legend: {
+    textStyle: {
+      fontName: "Roboto",
+      fontStyle: "bold",
+      fontSize: 12,
+      color: "#663926"
+    }
   },
   series: {},
 }
@@ -64,18 +81,6 @@ const LineChartOptions = {
 function TerraformChart() {
   const { frame, redTerraform, blueTerraform } = useContext(ViewerContext)
 
-  // var frameCurr = frame
-  // if ((frame - parseInt(frame)) != 0) {
-  //   console.log("parseInt" + parseInt(frame))
-  //   console.log(frame - parseInt(frame))
-  // }
-
-  //LineData.push(['Frame', 'Blue Team', 'Red Team'])
-  //LineData.push([0,0,0])
-  // console.log("newLineData: " + newLineData)
-
-  // console.log("redMetal: " + redMetal
-  // console.log(framePlaying)
   const LineData = [
     ["Frame", "B", "R"],
     [0, 0, 0],
@@ -91,7 +96,7 @@ function TerraformChart() {
 
   return (
     <div className="container mt-3">
-      <h2 style={{ fontSize: "3.5vmin", marginBottom: 0 }}>Terraform Graph</h2>
+      <h2 style={{ fontSize: "3.5vmin", marginBottom: 18 }}>Terraform Graph</h2>
       <Stack alignItems="center" justifyContent="center">
         <Chart
           width={"380px"}
