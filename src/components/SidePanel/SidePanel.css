@@ -7,11 +7,39 @@
   overflow-x: hidden;
 }
 
+.blue-panel {
+  background-color: var(--blue-color);
+  flex-grow: 0;
+  width: 30vw;
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.red-panel {
+  background-color: var(--red-color);
+  flex-grow: 0;
+  width: 30vw;
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
 h1 {
   font-family: "Earth Orbiter", sans-serif;
   color: var(--dark-color);
   font-size: 5vmin;
   margin: 5vh 1vw 3vh 1vw;
+}
+
+hwin {
+  height: 170px;
+  width: 270px;
+  font-family: "Earth Orbiter", sans-serif;
+  color: rgb(255, 255, 255);
+  font-size: 7vmin;
+  height: 500px;
+  line-height: 500px;
 }
 
 .info {

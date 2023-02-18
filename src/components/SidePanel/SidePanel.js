@@ -128,8 +128,21 @@ export default function SidePanel(props) {
     props.onP2VisToggled(checkbox.checked)
   }
 
+  const handleFinished = () => {
+    setIsFinished(false)
+  }
+
   return (
     <div className="side-panel">
+      {isFinished ? 
+      (
+        <div className={replay.winner === "blue" ? "blue-panel" : "red-panel"} onClick={handleFinished}>
+          <hwin>
+            {replay.winner === "blue" ? "BLUE" : "RED"} WINS!
+          </hwin>
+        </div>
+      ) :
+      (<div className="side-panel">
       <button onClick={props.togglePage}> Switch To Map Maker </button>
       <h1 style={{ marginTop: 0 }}>AWAP 2023 Viewer</h1>
       <input
@@ -151,13 +164,13 @@ export default function SidePanel(props) {
             {" "}
             {replay.red_bot} vs {replay.blue_bot}{" "}
           </h2>
-          {isFinished ? (
+          {/* {isFinished ? (
             <h2 className="info">
               {replay.winner === "blue" ? "BLUE" : "RED"} WINS!
             </h2>
           ) : (
             <div></div>
-          )}
+          )} */}
           <h2 className="info">
             FRAME {sliderValue < 0 ? 0 : sliderValue} OF{" "}
             {replay.turns.length - 1} / TURN {metaData[0]} OF{" "}
@@ -286,6 +299,7 @@ export default function SidePanel(props) {
       <h2 className="info"> BLUE ROBOTS: {replay == null ? 0 : blueRobots} </h2>
       <TerraformChart />
       <LineChart />
+      </div>)}
     </div>
   )
 }
