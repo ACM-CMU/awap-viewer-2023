@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-
+import "./SidePanel.css"
 import Stack from "@mui/material/Stack"
 import Chart from "react-google-charts"
 import { ViewerContext } from "../../pages/Viewer"
@@ -11,12 +11,12 @@ const LineChartOptions = {
     strokeWidth: 2,
   },
   chartArea: {
-    top: 40,
-    left: 80,
     backgroundColor: {
       fill: "#F9B697",
       opacity: 100,
     },
+    width: "55%",
+    height: "70%",
   },
 
   titleTextStyle: {
@@ -30,7 +30,7 @@ const LineChartOptions = {
       fontName: "Roboto",
       fontStyle: "bold",
       italic: false,
-      fontSize: 15,
+      fontSize: "2vmin",
       color: "#663926",
     },
     baselineColor: "#421f0f",
@@ -45,12 +45,12 @@ const LineChartOptions = {
     },
   },
   vAxis: {
-    title: "Terraformed Tiles",
+    title: "Metal",
     titleTextStyle: {
       fontName: "Roboto",
       fontStyle: "bold",
       italic: false,
-      fontSize: 15,
+      fontSize: "2vmin",
       color: "#663926",
     },
     viewWindow: {
@@ -71,9 +71,10 @@ const LineChartOptions = {
     textStyle: {
       fontName: "Roboto",
       fontStyle: "bold",
-      fontSize: 12,
+      fontSize: "1vmin",
       color: "#663926",
     },
+    position: "bottom",
   },
   series: {},
 }
@@ -98,9 +99,9 @@ function LineChart() {
   return (
     <div>
       <div className="vert-container graph">
-        <h2 style={{ fontSize: "3vmin", margin: "0 1 18 1" }}>Metal Graph</h2>
+        <h2 className="info stats">Metal Graph</h2>
         <Chart
-          width={"100%"}
+          width={"13vw"}
           height={"100%"}
           chartType="LineChart"
           loader={<div>Loading Chart</div>}
